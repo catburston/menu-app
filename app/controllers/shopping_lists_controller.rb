@@ -10,11 +10,16 @@ class ShoppingListsController < ApplicationController
   # GET /shopping_lists/1
   # GET /shopping_lists/1.json
   def show
+    ingredients = @shopping_list.ingredients
+    @ingredient_list = ingredients.group("ingredients.name").count
+    groceries = @shopping_list.groceries
+    @grocery_list = groceries.group("groceries.name").count
   end
 
   # GET /shopping_lists/new
   def new
     @shopping_list = ShoppingList.new
+    @shopping_list.name = @shopping_list.menu.name
     @groceries = Grocery.all
   end
 
@@ -27,6 +32,7 @@ class ShoppingListsController < ApplicationController
   # POST /shopping_lists.json
   def create
     @shopping_list = ShoppingList.new(shopping_list_params)
+    @shopping_list.name = @shopping_list.menu.name
 
     respond_to do |format|
       if @shopping_list.save

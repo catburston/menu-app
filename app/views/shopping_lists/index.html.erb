@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>List</th>
+      <th>Menu</th>
       <th>Groceries</th>
       <th>Manage</th>
     </tr>
@@ -14,11 +14,16 @@
   <tbody>
     <% @shopping_lists.each do |shopping_list| %>
       <tr>
-        <td><%= link_to shopping_list.name %></td>
+        <td><%= link_to shopping_list.menu.name, shopping_list_path(shopping_list) %></td>
         <td>
           <ul>
             <% shopping_list.groceries.each do |g| %>
               <li><%= g.name %></li>
+            <% end %>
+          </ul>
+          <ul>
+            <% shopping_list.ingredients.each do |i| %>
+              <li><%= i.name %></li>
             <% end %>
           </ul>
         </td>
@@ -27,7 +32,3 @@
     <% end %>
   </tbody>
 </table>
-
-<hr>
-
-<%= link_to 'New Shopping list', new_shopping_list_path %>

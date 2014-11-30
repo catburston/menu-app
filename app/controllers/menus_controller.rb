@@ -10,6 +10,8 @@ class MenusController < ApplicationController
   # GET /menus/1
   # GET /menus/1.json
   def show
+    ingredients = @menu.ingredients.select("ingredients.id, ingredients.name, ingredients.shop_section")
+    @ingredient_list = ingredients.order("shop_section ASC").group("ingredients.name").count
   end
 
   # GET /menus/new
@@ -31,6 +33,7 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
+        @menu.create_shopping_list
         format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
       else

@@ -20,3 +20,27 @@
 <hr>
 <%= link_to 'Edit', edit_menu_path(@menu) %> |
 <%= link_to 'Back', menus_path %>
+<hr>
+<h2>All Ingredients for this Menu</h2>
+
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Ingredient</th>
+    <th>Grocery</th>
+  </tr>
+  <% @ingredient_list.each do |k, v| %>
+  <% i = Ingredient.find_by name: k %>
+    <tr>
+      <td>
+        <%= v %>
+      </td>
+      <td>
+        <%= k %>
+      </td>
+      <td>
+        <%= i.shop_section %>
+      </td>
+    </tr>
+  <% end %>
+</table>
