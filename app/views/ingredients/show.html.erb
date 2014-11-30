@@ -12,9 +12,6 @@
   <%= @ingredient.shop_section %>
 </p>
 
-
+<hr>
 <%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
 <%= link_to 'Delete', @ingredient, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<hr>
-<%= link_to 'All ingredients', ingredients_path %> |

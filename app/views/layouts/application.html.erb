@@ -12,12 +12,12 @@
   </head>
 
   <body>
-    <header>
-      <%= link_to 'home', root_path %> | <%= link_to 'Menus', controller: 'menus' %> | <%= link_to 'Recipes', controller: 'recipes' %> | <%= link_to 'Ingredients', controller: 'ingredients' %> | <%= link_to 'Shopping Lists', controller: 'shopping_lists' %> | <%= link_to 'Groceries', controller: 'groceries' %><br />
-      <%= link_to 'Add Menu', new_menu_path %> | <%= link_to 'Add Recipe', new_recipe_path %> | <%= link_to 'Add Ingredient', new_ingredient_path %> | <%= link_to 'Add Grocery', new_grocery_path %>
-    </header>
+    <%= render '/shared/navigation' %>
 
-    <%= yield %>
+    <div class="row">
+      <%= yield %>
+    </div>
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>
@@ -28,7 +28,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Menu Planner" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Menu Planner App" %></title>
 
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>

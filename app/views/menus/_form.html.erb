@@ -2,7 +2,7 @@
 
 <%= form_for(@menu) do |f| %>
   <% if @menu.errors.any? %>
-    <div id="error_explanation">
+    <div data-alert class="alert-box" id="error_explanation">
       <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
 
       <ul>
@@ -10,10 +10,11 @@
         <li><%= message %></li>
       <% end %>
       </ul>
+      <a href="#" class="close">&times;</a>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field row">
     <%= f.label :name %><br>
     <% if @menu.new_record? %>
       <%= f.text_field :name, :value => "Menu for #{@date}" %>
@@ -21,10 +22,10 @@
       <%= f.text_field :name %>
     <% end %>
   </div>
-  <div class="field">
+  <div class="field row">
     <%= collection_check_boxes(:menu, :recipe_ids, @recipes, :id, :name) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions row">
+    <%= f.submit "Save", class: "button" %>
   </div>
 <% end %>
