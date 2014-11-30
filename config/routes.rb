@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :groceries
+
+  resources :shopping_lists
+
   get 'welcome/index'
   root 'welcome#index'
 

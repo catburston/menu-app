@@ -49,3 +49,12 @@ menus.each do |m, index|
   end
 end
 puts "#{menus.length} menus created"
+
+puts "Creating Groceries"
+groceriesArray = ['woolwash', 'floor cleaner', 'laundry detergent', 'batteries']
+grocery_sections = ['laundry', 'cleaning', 'other']
+
+(1..groceriesArray.length-1).each do |index|
+  Grocery.create!(name: groceriesArray[index-1], section: grocery_sections.sample)
+end
+puts "#{groceriesArray.length} groceries created"

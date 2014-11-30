@@ -1,0 +1,16 @@
+<!-- show.html.erb -->
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @grocery.name %>
+</p>
+
+<p>
+  <strong>Section:</strong>
+  <%= @grocery.section %>
+</p>
+<hr>
+<%= link_to 'Edit', edit_grocery_path(@grocery) %> |
+<%= link_to 'All groceries', groceries_path %>

@@ -1,0 +1,27 @@
+<!-- index.html.erb -->
+
+<h1>All groceries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Section</th>
+      <th>Manage</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groceries.each do |grocery| %>
+      <tr>
+        <td><%= link_to grocery.name %></td>
+        <td><%= grocery.section %></td>
+        <td><%= link_to 'Edit', edit_grocery_path(grocery) %> | <%= link_to 'Delete', grocery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<%= link_to 'New Grocery', new_grocery_path %>

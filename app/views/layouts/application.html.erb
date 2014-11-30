@@ -13,8 +13,8 @@
 
   <body>
     <header>
-      <%= link_to 'home', root_path %> | <%= link_to 'Menus', controller: 'menus' %> | <%= link_to 'Recipes', controller: 'recipes' %> | <%= link_to 'Ingredients', controller: 'ingredients' %><br />
-      <%= link_to 'Add Menu', new_menu_path %> | <%= link_to 'Add Recipe', new_recipe_path %> | <%= link_to 'Add Ingredient', new_ingredient_path %>
+      <%= link_to 'home', root_path %> | <%= link_to 'Menus', controller: 'menus' %> | <%= link_to 'Recipes', controller: 'recipes' %> | <%= link_to 'Ingredients', controller: 'ingredients' %> | <%= link_to 'Shopping Lists', controller: 'shopping_lists' %> | <%= link_to 'Groceries', controller: 'groceries' %><br />
+      <%= link_to 'Add Menu', new_menu_path %> | <%= link_to 'Add Recipe', new_recipe_path %> | <%= link_to 'Add Ingredient', new_ingredient_path %> | <%= link_to 'Add Grocery', new_grocery_path %>
     </header>
 
     <%= yield %>

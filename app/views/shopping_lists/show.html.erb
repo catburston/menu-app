@@ -1,0 +1,20 @@
+<!-- show.html.erb -->
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @shopping_list.name %>
+</p>
+<p>
+  <strong>Groceries:</strong>
+  <ul>
+    <% @shopping_list.groceries.each do |g| %>
+      <li><%= g.name %></li>
+    <% end %>
+  </ul>
+</p>
+
+<hr>
+<%= link_to 'Edit', edit_shopping_list_path(@shopping_list) %> |
+<%= link_to 'Back', shopping_lists_path %>
