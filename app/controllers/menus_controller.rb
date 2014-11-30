@@ -10,8 +10,8 @@ class MenusController < ApplicationController
   # GET /menus/1
   # GET /menus/1.json
   def show
-    ingredients = @menu.ingredients.select("ingredients.id, ingredients.name, ingredients.shop_section")
-    @ingredient_list = ingredients.order("shop_section ASC").group("ingredients.name").count
+    ingredients = @menu.ingredients
+    @ingredient_list = ingredients.group("ingredients.name").count
   end
 
   # GET /menus/new
