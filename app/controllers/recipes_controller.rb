@@ -16,12 +16,12 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.all.order("ingredients.name ASC")
   end
 
   # GET /recipes/1/edit
   def edit
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.all.order("ingredients.name ASC")
   end
 
   # POST /recipes

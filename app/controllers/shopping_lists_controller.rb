@@ -20,12 +20,12 @@ class ShoppingListsController < ApplicationController
   def new
     @shopping_list = ShoppingList.new
     @shopping_list.name = @shopping_list.menu.name
-    @groceries = Grocery.all
+    @groceries = Grocery.all.order("ingredients.name ASC")
   end
 
   # GET /shopping_lists/1/edit
   def edit
-    @groceries = Grocery.all
+    @groceries = Grocery.all.order("ingredients.name ASC")
   end
 
   # POST /shopping_lists
