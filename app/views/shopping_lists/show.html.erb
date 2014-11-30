@@ -2,19 +2,54 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @shopping_list.name %>
-</p>
-<p>
-  <strong>Groceries:</strong>
-  <ul>
-    <% @shopping_list.groceries.each do |g| %>
-      <li><%= g.name %></li>
+  <h1><%= @shopping_list.menu.name %></h1>
+
+  <h2>Menu Groceries:</h2>
+  <table>
+    <tr>
+      <th>Quantity</th>
+      <th>Ingredient</th>
+      <th>Section</th>
+    </tr>
+    <% @ingredient_list.each do |k, v| %>
+    <% i = Ingredient.find_by name: k %>
+      <tr>
+        <td>
+          <%= v %>
+        </td>
+        <td>
+          <%= k %>
+        </td>
+        <td>
+          <%= i.shop_section %>
+        </td>
+      </tr>
     <% end %>
-  </ul>
-</p>
+  </table>
+  <h2>Other Groceries:</h2>
+    <table>
+    <tr>
+      <th>Quantity</th>
+      <th>Grocery</th>
+      <th>Section</th>
+    </tr>
+    <% @grocery_list.each do |k, v| %>
+    <% g = Grocery.find_by name: k %>
+      <tr>
+        <td>
+          <%= v %>
+        </td>
+        <td>
+          <%= k %>
+        </td>
+        <td>
+          <%= g.section %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 
 <hr>
 <%= link_to 'Edit', edit_shopping_list_path(@shopping_list) %> |
-<%= link_to 'Back', shopping_lists_path %>
+<%= link_to 'All shopping lists', shopping_lists_path %>
+
