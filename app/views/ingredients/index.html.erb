@@ -1,0 +1,40 @@
+<!-- index.html.erb -->
+
+<h1>All ingredients</h1>
+<p>Filter: <%= link_to 'Shop Section', ingredients_path(:sort_params => 'shop_section') %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ingredient</th>
+      <th>Shop Section</th>
+      <th>Manage</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ingredients.each do |ingredient| %>
+      <tr>
+        <td>
+          <p>
+            <%= link_to ingredient.name, ingredient_path(ingredient) %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= ingredient.shop_section %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= link_to 'Edit', edit_ingredient_path(ingredient) %> | <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </p>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<%= link_to 'New Ingredient', new_ingredient_path %>

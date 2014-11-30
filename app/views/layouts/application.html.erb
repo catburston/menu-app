@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Menu Planner App" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <header>
+      <%= link_to 'home', root_path %> | <%= link_to 'Menus', controller: 'menus' %> | <%= link_to 'Recipes', controller: 'recipes' %> | <%= link_to 'Ingredients', controller: 'ingredients' %><br />
+      <%= link_to 'Add Menu', new_menu_path %> | <%= link_to 'Add Recipe', new_recipe_path %> | <%= link_to 'Add Ingredient', new_ingredient_path %>
+    </header>
+
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Menu Planner" %></title>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>

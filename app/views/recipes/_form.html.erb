@@ -1,0 +1,38 @@
+<!-- _form.html.erb -->
+
+<%= form_for(@recipe) do |f| %>
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :recipe_category %><br>
+    <%= select(:recipe, :recipe_category, ['pasta', 'rice', 'soup', 'salad', 'sweets', 'other']) %>
+  </div>
+  <div class="field">
+    <%= f.label :recipe_type %><br>
+    <%= select(:recipe, :recipe_type, ['schoolnight', 'potheavy', 'main', 'side', 'dessert']) %>
+  </div>
+  <div class="field">
+    <%= f.label :chef %><br>
+    <%= select(:recipe, :chef, ['Cat', 'Tom']) %>
+  </div>
+  <div class="field">
+    <%= collection_check_boxes(:recipe, :ingredient_ids, @ingredients, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

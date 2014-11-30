@@ -1,0 +1,30 @@
+<!-- _form.html.erb -->
+
+<%= form_for(@menu) do |f| %>
+  <% if @menu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
+
+      <ul>
+      <% @menu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <% if @menu.new_record? %>
+      <%= f.text_field :name, :value => "Menu for #{@date}" %>
+    <% else %>
+      <%= f.text_field :name %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= collection_check_boxes(:menu, :recipe_ids, @recipes, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

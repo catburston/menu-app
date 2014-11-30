@@ -1,0 +1,43 @@
+<!-- index.html.erb -->
+
+<h1>All menus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Menu</th>
+      <th>Recipes</th>
+      <th>Manage</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menus.each do |menu| %>
+      <tr>
+        <td>
+          <p>
+            <%= link_to menu.name, menu %>
+          </p>
+        </td>
+        <td>
+          <ul>
+            <% menu.recipes.each do |r| %>
+              <li>
+                <%= link_to r.name, recipe_path(r) %>
+              </li>
+            <% end %>
+          </ul>
+        </td>
+        <td>
+          <p>
+            <%= link_to 'Edit', edit_menu_path(menu) %> | <%= link_to 'Delete', menu, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </p>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<%= link_to 'New Menu', new_menu_path %>

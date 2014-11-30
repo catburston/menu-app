@@ -1,0 +1,22 @@
+<!-- show.html.erb -->
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Menu:</strong>
+  <%= @menu.name %>
+</p>
+<p>
+  <strong>Recipes:</strong>
+  <ul>
+    <% @menu.recipes.each do |r| %>
+      <li>
+        <%= link_to r.name, recipe_path(r) %>
+      </li>
+    <% end %>
+  </ul>
+</p>
+
+<hr>
+<%= link_to 'Edit', edit_menu_path(@menu) %> |
+<%= link_to 'Back', menus_path %>

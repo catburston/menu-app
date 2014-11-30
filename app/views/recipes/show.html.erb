@@ -1,0 +1,23 @@
+<!-- show.html.erb -->
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h2><%= @recipe.name %></h2>
+  <%= @recipe.recipe_category %> | <%= @recipe.recipe_type %> | <%= @recipe.chef %>
+</p>
+
+<p>
+  <strong>Ingredients:</strong>
+  <ul>
+    <% @recipe.ingredients.each do |i| %>
+      <li><%= i.name %></li>
+    <% end %>
+  </ul>
+</p>
+
+<hr>
+
+<p>
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %> | <%= link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure?' }  %>
+</p>
