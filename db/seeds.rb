@@ -17,7 +17,7 @@ MENUS = 5
 
 puts "Creating Ingredients"
 ingredientsArray = ['allspice', 'baking powder', 'bay leaves', 'broccoli', 'brown sugar', 'bulghur', 'butter', 'capers', 'cardamom pods', 'carrot', 'capsicum', 'cauliflower', 'celery', 'cheddar', 'chilli powder', 'chilli sauce', 'chillies', 'cinnamon', 'cloves', 'coriander', 'coriander powder', 'creme fraiche', 'cumin seeds', 'curry leaves', 'dill', 'egg', 'eggplant', 'fennel', 'fetta', 'filo', 'flatbreads', 'flour', 'frozen peas', 'frozen spinach', 'garlic', 'ginger', 'goat cheese', 'gorgonzola', 'green olives', 'heavy cream', 'hokkien noodles', 'kasoori methi', 'leeks', 'lemon', 'lime', 'linguine', 'marjoram', 'milk', 'mint', 'mozzarella', 'mushroom', 'mustard seeds', 'nutmeg', 'olive oil', 'onions', 'oregano', 'orzo', 'panch phora', 'parmesan', 'parsley', 'pasta', 'pastry shell', 'pecorino', 'peppercorns', 'pinenuts', 'potatoes', 'red onion', 'red peppers', 'rice noodles', 'rocket', 'salted peanuts', 'scallions', 'shahi jeera', 'sour cream', 'soy sauce', 'spring onions', 'sriracha', 'star anise', 'swiss cheese', 'tarragon', 'tin lentils', 'tin tomatoes', 'tofu (fried)', 'tofu (hard)', 'tomato', 'tomato paste', 'tomato sauce ', 'tumeric', 'vegetable oil', 'vegetable stock', 'walnuts', 'white vinegar', 'yoghurt', 'zucchini']
-ingredient_sections = ['dairy', 'nuts', 'bread', 'fruit and veg', 'tinned goods', 'cleaning', 'market']
+ingredient_sections = ['dairy', 'nuts', 'bread', 'fruit and veg', 'tinned goods', 'cleaning', 'market', 'frozen', 'deli', 'snacks', 'baking']
 
 (1..ingredientsArray.length-1).each do |index|
   Ingredient.create!(name: ingredientsArray[index-1], shop_section: ingredient_sections.sample)
@@ -26,7 +26,7 @@ puts "#{ingredientsArray.length} ingredients created"
 
 puts "Creating Recipes"
 recipesArray = ['aloo gobi', 'baked eggplant pasta', 'baked leek and walnut penne', 'baked tomato pasta sauce', 'bechamel and roast veg', 'bowl o veg', 'broccoli chilli pasta', 'caponata', 'cauliflower cheese', 'dahl', 'fennel salad', 'fried rice', 'frittata', 'fritters (broccoli)', 'fritters (cauliflower)', 'fritters (zucchini)', 'grain salad', 'laksa soup', 'macaroni cheese', 'margarita pizza', 'mee goreng', 'mushroom and pesto pizza', 'mushroom quiche', 'muttar paneer', 'pad thai', 'pakora', 'palak gobi', 'pasta mozzarella salad', 'pumpkin soup', 'red pepper alfredo', 'red pepper soup', 'risotto (mushroom)', 'saag paneer', 'samosas', 'shepherd pie', 'spanakopita', 'tabbouleh', 'tex mex', 'veggie pasta', 'veggie soup', 'zucchini coconut curry']
-recipe_categories = ['pasta', 'rice', 'soup', 'salad', 'other']
+recipe_categories = ['pasta', 'rice', 'soup', 'salad', 'other', 'curry']
 recipe_types = ['schoolnight', 'potheavy', 'main', 'side', 'dessert']
 recipe_chefs = ['Cat', 'Tom']
 
@@ -51,8 +51,8 @@ end
 puts "#{menus.length} menus created"
 
 puts "Creating Groceries"
-groceriesArray = ['woolwash', 'floor cleaner', 'laundry detergent', 'batteries']
-grocery_sections = ['laundry', 'cleaning', 'other']
+groceriesArray = ['woolwash', 'floor cleaner', 'laundry detergent', 'batteries', 'toilet paper', 'kitchen towel']
+grocery_sections = ['laundry', 'cleaning', 'other', 'personal hygiene']
 
 (1..groceriesArray.length-1).each do |index|
   Grocery.create!(name: groceriesArray[index-1], section: grocery_sections.sample)
