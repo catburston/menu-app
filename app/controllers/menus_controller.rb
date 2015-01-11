@@ -11,7 +11,7 @@ class MenusController < ApplicationController
   # GET /menus/1.json
   def show
     ingredients = @menu.ingredients
-    @ingredient_list = ingredients.group("ingredients.name").count
+    @ingredient_list = ingredients.order("ingredients.shop_section").group("ingredients.shop_section, ingredients.name").count
   end
 
   # GET /menus/new
@@ -33,7 +33,7 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
-        @menu.create_shopping_list
+        # @menu.create_shopping_list
         format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
       else
@@ -76,5 +76,10 @@ class MenusController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
       params.require(:menu).permit(:name, :recipe_ids => [])
+    end
+
+    #params to show only certain store sections
+    def show_params
+      params.permit(:dairy, :nuts, :bread, :fruit_veg, :tinned_goods, :cleaning, :market, :frozen, :deli, :snacks, :baking)
     end
 end
