@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @ingredients = Ingredient.all.order("ingredients.name ASC")
+    @shop_sections = Ingredient.select(:shop_section).distinct
   end
 
   # GET /recipes/1/edit

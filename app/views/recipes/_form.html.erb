@@ -19,19 +19,27 @@
     <%= f.text_field :name %>
   </div>
   <div class="field row">
-    <%= f.label :recipe_category %><br>
-    <%= select(:recipe, :recipe_category, ['pasta', 'rice', 'soup', 'salad', 'sweets', 'other']) %>
-  </div>
-  <div class="field row">
+    <div class="large-4 columns">
+      <%= f.label :recipe_category %><br>
+      <%= select(:recipe, :recipe_category, ['pasta', 'rice', 'soup', 'salad', 'sweets', 'other']) %>
+    </div>
+    <div class="large-4 columns">
     <%= f.label :recipe_type %><br>
     <%= select(:recipe, :recipe_type, ['schoolnight', 'potheavy', 'main', 'side', 'dessert']) %>
-  </div>
-  <div class="field row">
+    </div>
+    <div class="large-4 columns">
     <%= f.label :chef %><br>
     <%= select(:recipe, :chef, ['Cat', 'Tom']) %>
+    </div>
   </div>
   <div class="field row">
-    <%= f.collection_check_boxes(:ingredient_ids, @ingredients, :id, :name, :collection_wrapper_tag => :ul, :collection_wrapper_class => "small-block-grid-4", :item_wrapper_tag => "li", :item_wrapper_class => "checkbox_container") %>
+    <h3>Ingredients</h3>
+    <% @shop_sections.each do |sec| %>
+      <h4><%= sec.shop_section %></h4>
+      <% section_ings = @ingredients.where(shop_section: sec.shop_section) %>
+      <%= f.collection_check_boxes(:ingredient_ids, section_ings, :id, :name, :collection_wrapper_tag => :ul, :collection_wrapper_class => "small-block-grid-4", :item_wrapper_tag => "li", :item_wrapper_class => "checkbox_container") %>
+    <% end %>
+        
   </div>
   <div class="actions row">
     <%= f.submit "Save", class: "button" %>
