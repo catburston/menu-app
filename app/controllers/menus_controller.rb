@@ -17,13 +17,13 @@ class MenusController < ApplicationController
   # GET /menus/new
   def new
     @menu = Menu.new
-    @recipes = Recipe.all
+    @recipes = Recipe.all.order("recipes.name ASC")
     @date = Date.commercial(Date.today.year, 1+Date.today.cweek, 1).strftime("%d %b, %Y")
   end
 
   # GET /menus/1/edit
   def edit
-    @recipes = Recipe.all
+    @recipes = Recipe.all.all.order("recipes.name ASC")
   end
 
   # POST /menus

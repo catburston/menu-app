@@ -1,6 +1,6 @@
 <!-- _form.html.erb -->
 
-<%= form_for(@menu) do |f| %>
+<%= simple_form_for(@menu) do |f| %>
   <% if @menu.errors.any? %>
     <div data-alert class="alert-box" id="error_explanation">
       <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
@@ -23,7 +23,8 @@
     <% end %>
   </div>
   <div class="field row">
-    <%= collection_check_boxes(:menu, :recipe_ids, @recipes, :id, :name) %>
+
+    <%= f.collection_check_boxes(:recipe_ids, @recipes, :id, :name, :collection_wrapper_tag => :ul, :collection_wrapper_class => "small-block-grid-4", :item_wrapper_tag => "li", :item_wrapper_class => "checkbox_container") %>
   </div>
   <div class="actions row">
     <%= f.submit "Save", class: "button" %>

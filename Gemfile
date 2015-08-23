@@ -14,6 +14,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+gem 'simple_form'
+
 # foundation css by ZURB
 gem 'foundation-rails'
 # Use jquery as the JavaScript library

@@ -15,3 +15,7 @@
  *= require foundation_and_overrides
 
  */
+
+input[type="checkbox"] + label, input[type="radio"] + label, label.collection_check_boxes {
+  display: inline;
+}
