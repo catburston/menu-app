@@ -12,18 +12,18 @@
     <th>
       Ingredients
     </th>
-    <th>
-      Manage
-    </th>
   </thead>
   <% @recipes.each do |recipe| %>
     <tr>
       <td>
+        <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
         <p>
-          <strong><%= link_to recipe.name, recipe_path(recipe) %></strong><br />
           Category: <%= recipe.recipe_category %><br />
           Type: <%= recipe.recipe_type %><br />
           Chef: <%= recipe.chef %>
+        </p>
+        <p>
+          <%= link_to 'Edit', edit_recipe_path(recipe) %> | <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' }  %>
         </p>
       </td>
       <td>
@@ -33,11 +33,6 @@
               <li><%= i.name %></li>
             <% end %>
           </ul>
-        </p>
-      </td>
-      <td>
-        <p>
-          <%= link_to 'Edit', edit_recipe_path(recipe) %> | <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' }  %>
         </p>
       </td>
     </tr>
