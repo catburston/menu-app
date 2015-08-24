@@ -15,8 +15,9 @@
     <% @menus.each do |menu| %>
       <tr>
         <td>
+            <h3><%= link_to menu.name, menu %></h3>
           <p>
-            <%= link_to menu.name, menu %>
+            <%= link_to 'Edit', edit_menu_path(menu) %> | <%= link_to 'Delete', menu, method: :delete, data: { confirm: 'Are you sure?' } %>
           </p>
         </td>
         <td>
@@ -27,11 +28,6 @@
               </li>
             <% end %>
           </ul>
-        </td>
-        <td>
-          <p>
-            <%= link_to 'Edit', edit_menu_path(menu) %> | <%= link_to 'Delete', menu, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </p>
         </td>
       </tr>
     <% end %>
