@@ -37,9 +37,8 @@
     <% @shop_sections.each do |sec| %>
       <h4><%= sec.shop_section %></h4>
       <% section_ings = @ingredients.where(shop_section: sec.shop_section) %>
-      <%= f.collection_check_boxes(:ingredient_ids, section_ings, :id, :name, :collection_wrapper_tag => :ul, :collection_wrapper_class => "small-block-grid-4", :item_wrapper_tag => "li", :item_wrapper_class => "checkbox_container") %>
+      <%= f.collection_check_boxes(:ingredient_ids, section_ings, :id, :name, :collection_wrapper_tag => :ul, :collection_wrapper_class => "small-block-grid-2 medium-block-grid-3 large-block-grid-4", :item_wrapper_tag => "li", :item_wrapper_class => "checkbox_container") %>
     <% end %>
-        
   </div>
   <div class="actions row">
     <%= f.submit "Save", class: "button" %>

@@ -24,7 +24,7 @@
   </div>
   <div class="field row">
 
-    <%= f.collection_check_boxes(:recipe_ids, @recipes, :id, :name, :collection_wrapper_tag => :ul, :collection_wrapper_class => "small-block-grid-4", :item_wrapper_tag => "li", :item_wrapper_class => "checkbox_container") %>
+    <%= f.collection_check_boxes(:recipe_ids, @recipes, :id, :name, :collection_wrapper_tag => :ul, :collection_wrapper_class => "small-block-grid-2 medium-block-grid-3 large-block-grid-4", :item_wrapper_tag => "li", :item_wrapper_class => "checkbox_container") %>
   </div>
   <div class="actions row">
     <%= f.submit "Save", class: "button" %>
