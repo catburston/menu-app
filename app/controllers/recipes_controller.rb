@@ -23,6 +23,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1/edit
   def edit
     @ingredients = Ingredient.all.order("ingredients.name ASC")
+    @shop_sections = Ingredient.select(:shop_section).distinct
   end
 
   # POST /recipes
@@ -73,11 +74,11 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :recipe_category, :recipe_type, :chef, :ingredient_ids => [])
+      params.require(:recipe).permit(:name, :recipe_category, :recipe_type, :chef, :method, :ingredient_ids => [])
     end
 
     # parameters to sort recipes
     def sort_params
-      params.permit(:recipe_category, :recipe_type, :chef, :name)
+      params.permit(:recipe_category, :recipe_type, :chef, :name, :method)
     end
 end
