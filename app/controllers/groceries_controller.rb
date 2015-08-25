@@ -4,7 +4,11 @@ class GroceriesController < ApplicationController
   # GET /groceries
   # GET /groceries.json
   def index
-    @groceries = Grocery.all
+    if !Grocery.all.empty?
+      @groceries = Grocery.all
+    else
+      redirect_to new_grocery_url
+    end
   end
 
   # GET /groceries/1

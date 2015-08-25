@@ -4,7 +4,11 @@ class ShoppingListsController < ApplicationController
   # GET /shopping_lists
   # GET /shopping_lists.json
   def index
-    @shopping_lists = ShoppingList.all
+    if !ShoppingList.all.empty?
+      @shopping_lists = ShoppingList.all
+    else
+      redirect_to new_menu_url
+    end
   end
 
   # GET /shopping_lists/1

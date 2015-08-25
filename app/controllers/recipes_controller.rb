@@ -5,7 +5,11 @@ class RecipesController < ApplicationController
   # GET /recipes.json
   def index
     params[:sort_params] = %w{recipe_category recipe_type chef}.include?(params[:sort_params]) ? params[:sort_params] : 'name'
-    @recipes = Recipe.all.order "#{params[:sort_params]} ASC"
+    if !Recipe.all.empty?
+      @recipes = Recipe.all.order "#{params[:sort_params]} ASC"
+    else
+      redirect_to new_recipe_url
+    end
   end
 
   # GET /recipes/1

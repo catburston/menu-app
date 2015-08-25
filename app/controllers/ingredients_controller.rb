@@ -5,7 +5,11 @@ class IngredientsController < ApplicationController
   # GET /ingredients.json
   def index
     params[:sort_params] = %w{shop_section}.include?(params[:sort_params]) ? params[:sort_params] : 'name'
-    @ingredients = Ingredient.all.order "#{params[:sort_params]} ASC"
+    if !Ingredient.all.empty?
+      @ingredients = Ingredient.all.order "#{params[:sort_params]} ASC"
+    else
+      redirect_to new_ingredient_url
+    end
   end
 
   # GET /ingredients/1

@@ -4,7 +4,11 @@ class MenusController < ApplicationController
   # GET /menus
   # GET /menus.json
   def index
-    @menus = Menu.all.reverse_order
+    if !X.all.empty?
+      @menus = Menu.all.reverse_order
+    else
+      redirect_to new_menu_url
+    end
   end
 
   # GET /menus/1
