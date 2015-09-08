@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 
 gem 'simple_form'
+gem 'devise'
 
 # foundation css by ZURB
 gem 'foundation-rails'
