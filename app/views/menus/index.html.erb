@@ -16,7 +16,9 @@
         <td>
             <h3><%= link_to menu.name, menu %></h3>
           <p>
-            <%= link_to 'Edit', edit_menu_path(menu) %> | <%= link_to 'Delete', menu, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit', edit_menu_path(menu) %> | <%= link_to 'Delete', menu, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
           </p>
         </td>
         <td>

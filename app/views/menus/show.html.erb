@@ -23,7 +23,7 @@
 </p>
 
 <hr>
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
+<% if user_signed_in? %><%= link_to 'Edit', edit_menu_path(@menu) %> |<% end %>
 <%= link_to 'Back', menus_path %>
 <hr>
 <h2>All Ingredients for this Menu</h2>

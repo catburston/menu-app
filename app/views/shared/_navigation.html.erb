@@ -1,34 +1,59 @@
 <!-- _navigation.html.erb -->
-<nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><%= link_to 'home', root_path %></h1>
-    </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-  </ul>
-
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="active"><%= link_to 'Add Menu', new_menu_path %></li>
-      <li class="has-dropdown">
-        <a href="#">Manage Recipes</a>
-        <ul class="dropdown">
-          <li class="active"><%= link_to 'Add Recipe', new_recipe_path %></li>
-          <li><%= link_to 'Add Ingredient', new_ingredient_path %></li>
-          <li><%= link_to 'Add Grocery', new_grocery_path %></li>
-        </ul>
+<% if user_signed_in? %>
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to 'home', root_path %></h1>
       </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
     </ul>
 
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li><%= link_to 'Menus', controller: 'menus' %></li>
-      <li><%= link_to 'Recipes', controller: 'recipes' %></li>
-      <li><%= link_to 'Ingredients', controller: 'ingredients' %></li>
-      <li><%= link_to 'Shopping Lists', controller: 'shopping_lists' %></li>
-      <li><%= link_to 'Groceries', controller: 'groceries' %></li>
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="active"><%= link_to 'Add Menu', new_user_menu_path(current_user.id) %></li>
+        <li class="has-dropdown">
+          <a href="#">Manage Recipes</a>
+          <ul class="dropdown">
+            <li class="active"><%= link_to 'Add Recipe', new_user_recipe_path(current_user.id) %></li>
+            <li><%= link_to 'Add Ingredient', new_user_ingredient_path(current_user.id) %></li>
+            <li><%= link_to 'Add Grocery', new_user_grocery_path(current_user.id) %></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li><%= link_to 'Menus', menus_path %></li>
+        <li><%= link_to 'Recipes', recipes_path %></li>
+        <li><%= link_to 'Ingredients', ingredients_path %></li>
+        <li><%= link_to 'Shopping Lists', shopping_lists_path %></li>
+        <li><%= link_to 'Groceries', groceries_path %></li>
+      </ul>
+    </section>
+  </nav>
+<% else %>
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to 'home', root_path %></h1>
+      </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
     </ul>
-  </section>
-</nav>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="active"><%= link_to 'Sign Up', new_user_registration_path %></li>
+      </ul>
+
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li><%= link_to 'Menus', menus_path %></li>
+        <li><%= link_to 'Recipes', recipes_path %></li>
+      </ul>
+    </section>
+  </nav>
+<% end %>

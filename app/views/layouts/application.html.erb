@@ -6,13 +6,17 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Menu Planner App" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
     <%= render '/shared/navigation' %>
+    <!-- START flash messages for devise -->
+    <!-- <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
+    <!-- END flash messages for devise -->
 
     <div class="row">
       <%= yield %>

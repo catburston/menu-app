@@ -1,10 +1,12 @@
 class MenusController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
+  # before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /menus
   # GET /menus.json
   def index
-    if !X.all.empty?
+    if !Menu.all.empty?
       @menus = Menu.all.reverse_order
     else
       redirect_to new_menu_url

@@ -23,7 +23,9 @@
           Chef: <%= recipe.chef %>
         </p>
         <p>
-          <%= link_to 'Edit', edit_recipe_path(recipe) %> | <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' }  %>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit', edit_recipe_path(recipe) %> | <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' }  %>
+          <% end %>
         </p>
       </td>
       <td>

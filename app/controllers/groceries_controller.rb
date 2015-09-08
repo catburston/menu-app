@@ -1,5 +1,6 @@
 class GroceriesController < ApplicationController
   before_action :set_grocery, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /groceries
   # GET /groceries.json

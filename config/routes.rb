@@ -1,17 +1,35 @@
 Rails.application.routes.draw do
-
-  resources :groceries
-
-  resources :shopping_lists
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
 
   get 'welcome/index'
   root 'welcome#index'
 
-  resources :menus
+  resources :users do
 
-  resources :recipes
+    resources :groceries, only: [:new, :create, :edit, :destroy, :update]
 
-  resources :ingredients
+    resources :shopping_lists, only: [:new, :create, :edit, :destroy, :update]
+
+    resources :menus, only: [:new, :create, :edit, :destroy, :update]
+
+    resources :recipes, only: [:new, :create, :edit, :destroy, :update]
+
+    resources :ingredients, only: [:new, :create, :edit, :destroy, :update]
+
+  end
+
+  resources :groceries, only: [:index, :show]
+
+  resources :shopping_lists, only: [:index, :show]
+
+  resources :menus, only: [:index, :show]
+
+  resources :recipes, only: [:index, :show]
+
+  resources :ingredients, only: [:index, :show]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
