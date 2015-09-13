@@ -616,3 +616,6 @@ Recipe::HABTM_Menus.create!([
   {menu_id: 12, recipe_id: 43},
   {menu_id: 12, recipe_id: 1}
 ])
+
+puts "creating user"
+user = User.create!(:name => 'Cat B', :email => 'cat1788@gmail.com', :password => 'topsecret', :password_confirmation => 'topsecret')

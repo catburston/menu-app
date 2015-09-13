@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
       groceries = @shopping_list.groceries
       @grocery_list = groceries.group("groceries.name").count
     else
-      redirect_to new_menu_url
+      redirect_to menus_path
     end
   end
 end
