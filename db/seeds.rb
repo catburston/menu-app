@@ -11,7 +11,11 @@ if Rails.env == "development" || Rails.env == "test"
   Menu.destroy_all
   Recipe.destroy_all
   Ingredient.destroy_all
+  User.destroy_all
 end
+
+puts "creating user"
+user = User.create!(:email => 'cat1788@gmail.com', :password => 'topsecret', :password_confirmation => 'topsecret')
 
 puts "creating grocery items"
 Grocery.create!([
@@ -137,64 +141,64 @@ Ingredient.create!([
 
 puts "creating recipes"
 Recipe.create!([
-  {name: "baked eggplant pasta", recipe_category: "rice", recipe_type: "main", chef: "Cat"},
-  {name: "baked tomato pasta sauce", recipe_category: "salad", recipe_type: "side", chef: "Tom"},
-  {name: "bechamel and roast veg", recipe_category: "pasta", recipe_type: "dessert", chef: "Cat"},
-  {name: "bowl o veg", recipe_category: "other", recipe_type: "main", chef: "Tom"},
-  {name: "caponata", recipe_category: "salad", recipe_type: "dessert", chef: "Cat"},
-  {name: "cauliflower cheese", recipe_category: "other", recipe_type: "dessert", chef: "Cat"},
-  {name: "fennel salad", recipe_category: "rice", recipe_type: "main", chef: "Cat"},
-  {name: "fried rice", recipe_category: "salad", recipe_type: "schoolnight", chef: "Tom"},
-  {name: "frittata", recipe_category: "pasta", recipe_type: "schoolnight", chef: "Tom"},
-  {name: "fritters (broccoli)", recipe_category: "salad", recipe_type: "schoolnight", chef: "Cat"},
-  {name: "fritters (cauliflower)", recipe_category: "soup", recipe_type: "side", chef: "Tom"},
-  {name: "grain salad", recipe_category: "pasta", recipe_type: "schoolnight", chef: "Cat"},
-  {name: "laksa soup", recipe_category: "pasta", recipe_type: "main", chef: "Cat"},
-  {name: "macaroni cheese", recipe_category: "salad", recipe_type: "dessert", chef: "Cat"},
-  {name: "margarita pizza", recipe_category: "pasta", recipe_type: "dessert", chef: "Cat"},
-  {name: "mee goreng", recipe_category: "pasta", recipe_type: "potheavy", chef: "Cat"},
-  {name: "mushroom and pesto pizza", recipe_category: "soup", recipe_type: "main", chef: "Cat"},
-  {name: "muttar paneer", recipe_category: "rice", recipe_type: "main", chef: "Tom"},
-  {name: "pad thai", recipe_category: "salad", recipe_type: "potheavy", chef: "Tom"},
-  {name: "pakora", recipe_category: "salad", recipe_type: "dessert", chef: "Cat"},
-  {name: "palak gobi", recipe_category: "other", recipe_type: "potheavy", chef: "Tom"},
-  {name: "pumpkin soup", recipe_category: "pasta", recipe_type: "main", chef: "Tom"},
-  {name: "risotto (mushroom)", recipe_category: "rice", recipe_type: "main", chef: "Cat"},
-  {name: "saag paneer", recipe_category: "rice", recipe_type: "dessert", chef: "Tom"},
-  {name: "samosas", recipe_category: "rice", recipe_type: "main", chef: "Cat"},
-  {name: "spanakopita", recipe_category: "soup", recipe_type: "side", chef: "Cat"},
-  {name: "tabbouleh", recipe_category: "pasta", recipe_type: "dessert", chef: "Cat"},
-  {name: "tex mex", recipe_category: "pasta", recipe_type: "main", chef: "Tom"},
-  {name: "veggie pasta", recipe_category: "pasta", recipe_type: "schoolnight", chef: "Cat"},
-  {name: "dahl", recipe_category: "rice", recipe_type: "main", chef: "Tom"},
-  {name: "baked leek and walnut penne", recipe_category: "pasta", recipe_type: "main", chef: "Tom"},
-  {name: "red pepper alfredo", recipe_category: "pasta", recipe_type: "main", chef: "Cat"},
-  {name: "pasta mozzarella salad", recipe_category: "salad", recipe_type: "main", chef: "Cat"},
-  {name: "Butternut squash alfredo", recipe_category: "pasta", recipe_type: "main", chef: "Cat"},
-  {name: "Zucchini coconut curry", recipe_category: "rice", recipe_type: "main", chef: "Tom"},
-  {name: "broccoli chilli pasta", recipe_category: "pasta", recipe_type: "schoolnight", chef: "Cat"},
-  {name: "shepherd pie", recipe_category: "other", recipe_type: "main", chef: "Cat"},
-  {name: "mushroom quiche", recipe_category: "other", recipe_type: "main", chef: "Cat"},
-  {name: "red pepper soup", recipe_category: "soup", recipe_type: "schoolnight", chef: "Cat"},
-  {name: "veggie soup", recipe_category: "soup", recipe_type: "main", chef: "Cat"},
-  {name: "Caramelised onion quiche with steamed veg", recipe_category: "other", recipe_type: "main", chef: "Cat"},
-  {name: "fritters (zucchini)", recipe_category: "other", recipe_type: "main", chef: "Cat"},
-  {name: "Aloo gobi biryani", recipe_category: "rice", recipe_type: "main", chef: "Cat"}
+  {name: "baked eggplant pasta", recipe_category: "rice", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "baked tomato pasta sauce", recipe_category: "salad", recipe_type: "side", chef: "Tom", user_id: user.id},
+  {name: "bechamel and roast veg", recipe_category: "pasta", recipe_type: "dessert", chef: "Cat", user_id: user.id},
+  {name: "bowl o veg", recipe_category: "other", recipe_type: "main", chef: "Tom", user_id: user.id},
+  {name: "caponata", recipe_category: "salad", recipe_type: "dessert", chef: "Cat", user_id: user.id},
+  {name: "cauliflower cheese", recipe_category: "other", recipe_type: "dessert", chef: "Cat", user_id: user.id},
+  {name: "fennel salad", recipe_category: "rice", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "fried rice", recipe_category: "salad", recipe_type: "schoolnight", chef: "Tom", user_id: user.id},
+  {name: "frittata", recipe_category: "pasta", recipe_type: "schoolnight", chef: "Tom", user_id: user.id},
+  {name: "fritters (broccoli)", recipe_category: "salad", recipe_type: "schoolnight", chef: "Cat", user_id: user.id},
+  {name: "fritters (cauliflower)", recipe_category: "soup", recipe_type: "side", chef: "Tom", user_id: user.id},
+  {name: "grain salad", recipe_category: "pasta", recipe_type: "schoolnight", chef: "Cat", user_id: user.id},
+  {name: "laksa soup", recipe_category: "pasta", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "macaroni cheese", recipe_category: "salad", recipe_type: "dessert", chef: "Cat", user_id: user.id},
+  {name: "margarita pizza", recipe_category: "pasta", recipe_type: "dessert", chef: "Cat", user_id: user.id},
+  {name: "mee goreng", recipe_category: "pasta", recipe_type: "potheavy", chef: "Cat", user_id: user.id},
+  {name: "mushroom and pesto pizza", recipe_category: "soup", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "muttar paneer", recipe_category: "rice", recipe_type: "main", chef: "Tom", user_id: user.id},
+  {name: "pad thai", recipe_category: "salad", recipe_type: "potheavy", chef: "Tom", user_id: user.id},
+  {name: "pakora", recipe_category: "salad", recipe_type: "dessert", chef: "Cat", user_id: user.id},
+  {name: "palak gobi", recipe_category: "other", recipe_type: "potheavy", chef: "Tom", user_id: user.id},
+  {name: "pumpkin soup", recipe_category: "pasta", recipe_type: "main", chef: "Tom", user_id: user.id},
+  {name: "risotto (mushroom)", recipe_category: "rice", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "saag paneer", recipe_category: "rice", recipe_type: "dessert", chef: "Tom", user_id: user.id},
+  {name: "samosas", recipe_category: "rice", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "spanakopita", recipe_category: "soup", recipe_type: "side", chef: "Cat", user_id: user.id},
+  {name: "tabbouleh", recipe_category: "pasta", recipe_type: "dessert", chef: "Cat", user_id: user.id},
+  {name: "tex mex", recipe_category: "pasta", recipe_type: "main", chef: "Tom", user_id: user.id},
+  {name: "veggie pasta", recipe_category: "pasta", recipe_type: "schoolnight", chef: "Cat", user_id: user.id},
+  {name: "dahl", recipe_category: "rice", recipe_type: "main", chef: "Tom", user_id: user.id},
+  {name: "baked leek and walnut penne", recipe_category: "pasta", recipe_type: "main", chef: "Tom", user_id: user.id},
+  {name: "red pepper alfredo", recipe_category: "pasta", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "pasta mozzarella salad", recipe_category: "salad", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "Butternut squash alfredo", recipe_category: "pasta", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "Zucchini coconut curry", recipe_category: "rice", recipe_type: "main", chef: "Tom", user_id: user.id},
+  {name: "broccoli chilli pasta", recipe_category: "pasta", recipe_type: "schoolnight", chef: "Cat", user_id: user.id},
+  {name: "shepherd pie", recipe_category: "other", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "mushroom quiche", recipe_category: "other", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "red pepper soup", recipe_category: "soup", recipe_type: "schoolnight", chef: "Cat", user_id: user.id},
+  {name: "veggie soup", recipe_category: "soup", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "Caramelised onion quiche with steamed veg", recipe_category: "other", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "fritters (zucchini)", recipe_category: "other", recipe_type: "main", chef: "Cat", user_id: user.id},
+  {name: "Aloo gobi biryani", recipe_category: "rice", recipe_type: "main", chef: "Cat", user_id: user.id}
 ])
 
 puts "creating menus"
 Menu.create!([
-  {name: "Menu No. 1"},
-  {name: "Menu No. 2"},
-  {name: "Menu No. 3"},
-  {name: "Menu No. 4"},
-  {name: "Menu No. 5"},
-  {name: "Menu for 01 Dec, 2014"},
-  {name: "Menu for 08 dec, 2014"},
-  {name: "Menu for 08 dec, 2014"},
-  {name: "Menu for 15 dec, 2014"},
-  {name: "Menu for 05 jan, 2015"},
-  {name: "Menu for 12 jan, 2015"}
+  {name: "Menu No. 1", user_id: user.id},
+  {name: "Menu No. 2", user_id: user.id},
+  {name: "Menu No. 3", user_id: user.id},
+  {name: "Menu No. 4", user_id: user.id},
+  {name: "Menu No. 5", user_id: user.id},
+  {name: "Menu for 01 Dec, 2014", user_id: user.id},
+  {name: "Menu for 08 dec, 2014", user_id: user.id},
+  {name: "Menu for 08 dec, 2014", user_id: user.id},
+  {name: "Menu for 15 dec, 2014", user_id: user.id},
+  {name: "Menu for 05 jan, 2015", user_id: user.id},
+  {name: "Menu for 12 jan, 2015", user_id: user.id}
 ])
 
 puts "creating ingredients habtm recipes"
@@ -616,6 +620,3 @@ Recipe::HABTM_Menus.create!([
   {menu_id: 12, recipe_id: 43},
   {menu_id: 12, recipe_id: 1}
 ])
-
-puts "creating user"
-user = User.create!(:name => 'Cat B', :email => 'cat1788@gmail.com', :password => 'topsecret', :password_confirmation => 'topsecret')
