@@ -29,9 +29,9 @@
           </td>
           <td>
             <p>
-              <ul>
+              <ul class="inline-list">
                 <% recipe.ingredients.each do |i| %>
-                  <li><%= i.name %></li>
+                  <li>• <%= i.name %></li>
                 <% end %>
               </ul>
             </p>
