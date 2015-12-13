@@ -23,7 +23,10 @@
           Chef: <%= recipe.chef %>
         </p>
         <p>
-          <%= link_to 'Edit', edit_recipe_path(recipe) %> | <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' }  %>
+          <ul class="button-group round">
+            <li><%= link_to 'Edit', edit_menu_path(recipe), class: "button" %></li>
+            <li><%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
+          </ul>
         </p>
       </td>
       <td>

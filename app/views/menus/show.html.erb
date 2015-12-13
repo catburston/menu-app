@@ -7,12 +7,8 @@
   </div>
 <% end %>
 
-<p>
-  <strong>Menu:</strong>
-  <%= @menu.name %>
-</p>
-<p>
-  <strong>Recipes:</strong>
+  <h2>Menu: <%= @menu.name %></h2>
+  <h3>Recipes</h3>
   <ul>
     <% @menu.recipes.each do |r| %>
       <li>
@@ -23,8 +19,10 @@
 </p>
 
 <hr>
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>
+<ul class="button-group round">
+  <li><%= link_to 'Edit', edit_recipe_path(@menu), class: "button" %></li>
+  <li><%= link_to 'Delete', @menu, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
+</ul>
 <hr>
 <h2>All Ingredients for this Menu</h2>
 

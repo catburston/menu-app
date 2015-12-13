@@ -1,9 +1,11 @@
 <!-- show.html.erb -->
 
-<div data-alert class="alert-box" id="notice">
-  <%= notice %>
-  <a href="#" class="close">&times;</a>
-</div>
+<% if @ingredient.errors.any? %>
+  <div data-alert class="alert-box" id="notice">
+    <%= notice %>
+    <a href="#" class="close">&times;</a>
+  </div>
+<% end %>
 
 <p>
   <strong>Name:</strong>
@@ -16,5 +18,8 @@
 </p>
 
 <hr>
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
-<%= link_to 'Delete', @ingredient, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<ul class="button-group round">
+  <li><%= link_to 'Edit', edit_recipe_path(@ingredient), class: "button" %></li>
+  <li><%= link_to 'Delete', @ingredient, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
+</ul>

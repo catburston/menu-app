@@ -11,13 +11,13 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="active"><%= link_to 'Add Menu', new_menu_path %></li>
+      <li class="active"><%= link_to 'New Menu', new_menu_path %></li>
       <li class="has-dropdown">
         <a href="#">Manage Recipes</a>
         <ul class="dropdown">
-          <li class="active"><%= link_to 'Add Recipe', new_recipe_path %></li>
-          <li><%= link_to 'Add Ingredient', new_ingredient_path %></li>
-          <li><%= link_to 'Add Grocery', new_grocery_path %></li>
+          <li class="active"><%= link_to 'New Recipe', new_recipe_path %></li>
+          <li><%= link_to 'New Ingredient', new_ingredient_path %></li>
+          <li><%= link_to 'New Grocery', new_grocery_path %></li>
         </ul>
       </li>
     </ul>
@@ -27,8 +27,8 @@
       <li><%= link_to 'Menus', controller: 'menus' %></li>
       <li><%= link_to 'Recipes', controller: 'recipes' %></li>
       <li><%= link_to 'Ingredients', controller: 'ingredients' %></li>
-      <li><%= link_to 'Shopping Lists', controller: 'shopping_lists' %></li>
-      <li><%= link_to 'Groceries', controller: 'groceries' %></li>
+      <!-- <li><%= link_to 'Shopping Lists', controller: 'shopping_lists' %></li> -->
+      <!-- <li><%= link_to 'Groceries', controller: 'groceries' %></li> -->
     </ul>
   </section>
 </nav>

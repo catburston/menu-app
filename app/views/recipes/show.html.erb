@@ -1,18 +1,25 @@
 <!-- show.html.erb -->
 
-<div data-alert class="alert-box" id="notice">
-  <%= notice %>
-  <a href="#" class="close">&times;</a>
-</div>
+<% if @recipe.errors.any? %>
+  <div data-alert class="alert-box" id="notice">
+    <%= notice %>
+    <a href="#" class="close">&times;</a>
+  </div>
+<% end %>
+
 <div class="row">
   <div class="large-12 columns">
-    <h2><%= @recipe.name %></h2>
-    <%= @recipe.recipe_category %> | <%= @recipe.recipe_type %> | <%= @recipe.chef %>
+    <h2>Recipe: <%= @recipe.name %></h2>
+    <small>Category: <%= @recipe.recipe_category %> | Type: <%= @recipe.recipe_type %> | Chef: <%= @recipe.chef %></small>
+    <ul class="button-group round">
+      <li><%= link_to 'Edit', edit_recipe_path(@recipe), class: "button" %></li>
+      <li><%= link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
+    </ul>
   </div>
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <h3>Ingredients:</h3>
+    <h4><small>Ingredients</small></h4>
     <ul>
       <% @recipe.ingredients.each do |i| %>
         <li><%= i.name %></li>
@@ -20,15 +27,11 @@
     </ul>
   </div>
   <div class="small-9 columns">
-    <h3>Method</h3>
-    <p>
-      <%= @recipe.method %>
-    </p>
+    <div class="panel">
+      <h4>Method</h4>
+      <p>
+        <%= @recipe.method %>
+      </p>
+    </div>
   </div>
 </div>
-
-<hr>
-
-<p>
-  <%= link_to 'Edit', edit_recipe_path(@recipe) %> | <%= link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure?' }  %>
-</p>

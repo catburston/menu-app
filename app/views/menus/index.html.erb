@@ -15,9 +15,10 @@
       <tr>
         <td>
             <h3><%= link_to menu.name, menu %></h3>
-          <p>
-            <%= link_to 'Edit', edit_menu_path(menu) %> | <%= link_to 'Delete', menu, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </p>
+          <ul class="button-group round">
+            <li><%= link_to 'Edit', edit_menu_path(menu), class: "button" %></li>
+            <li><%= link_to 'Delete', menu, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
+          </ul>
         </td>
         <td>
           <ul>
