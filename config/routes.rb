@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+
+  resources :groceries
+
+  resources :shopping_lists
+
+  get 'welcome/index'
+  root 'welcome#index'
+
+  resources :menus
+
+  resources :recipes
+
+  resources :ingredients
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
