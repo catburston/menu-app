@@ -16,14 +16,10 @@
       </li>
     <% end %>
   </ul>
-</p>
-
-<hr>
-<ul class="button-group round">
-  <li><%= link_to 'Edit', edit_recipe_path(@menu), class: "button" %></li>
-  <li><%= link_to 'Delete', @menu, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
-</ul>
-<hr>
+  <ul class="button-group round">
+    <li><%= link_to 'Edit', edit_recipe_path(@menu), class: "button" %></li>
+    <li><%= link_to 'Delete', @menu, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
+  </ul>
 <h2>All Ingredients for this Menu</h2>
 
 <table>
