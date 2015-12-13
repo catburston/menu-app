@@ -1,43 +1,44 @@
 <!-- index.html.erb -->
+<!-- heading -->
+<div class="row">
+  <div class="large-12 columns">
+    <h2>My recipes</h2>
+  </div>
+  <div class="large-12 columns">
+    <small>Sort by: <%= link_to 'Category', recipes_path(:sort_params => 'recipe_category') %>, <%= link_to 'Type', recipes_path(:sort_params => 'recipe_type') %>, <%= link_to 'Chef', recipes_path(:sort_params => 'chef') %></small>
+  </div>
+</div>
 
-<h1>All recipes</h1>
+<!-- content -->
+<div class="row">
+  <div class="large-12 columns content-table">
+    <table>
+      <thead>
+        <th>
+          Recipe
+        </th>
+        <th>
+          Ingredients
+        </th>
+      </thead>
+      <% @recipes.each do |recipe| %>
+        <tr>
+          <td>
+            <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
+            <span class="label"><%= recipe.recipe_category %></span> <span class="label"><%= recipe.recipe_type %></span> <span class="label"><%= recipe.chef %></span>
+          </td>
+          <td>
+            <p>
+              <ul>
+                <% recipe.ingredients.each do |i| %>
+                  <li><%= i.name %></li>
+                <% end %>
+              </ul>
+            </p>
+          </td>
+        </tr>
+      <% end %>
+    </table>
 
-<p>Sort: <%= link_to 'Category', recipes_path(:sort_params => 'recipe_category') %>, <%= link_to 'Type', recipes_path(:sort_params => 'recipe_type') %>, <%= link_to 'Chef', recipes_path(:sort_params => 'chef') %></p>
-
-<table>
-  <thead>
-    <th>
-      Recipe
-    </th>
-    <th>
-      Ingredients
-    </th>
-  </thead>
-  <% @recipes.each do |recipe| %>
-    <tr>
-      <td>
-        <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
-        <p>
-          Category: <%= recipe.recipe_category %><br />
-          Type: <%= recipe.recipe_type %><br />
-          Chef: <%= recipe.chef %>
-        </p>
-        <p>
-          <ul class="button-group round">
-            <li><%= link_to 'Edit', edit_menu_path(recipe), class: "button" %></li>
-            <li><%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
-          </ul>
-        </p>
-      </td>
-      <td>
-        <p>
-          <ul>
-            <% recipe.ingredients.each do |i| %>
-              <li><%= i.name %></li>
-            <% end %>
-          </ul>
-        </p>
-      </td>
-    </tr>
-  <% end %>
-</table>
+  </div>
+</div>

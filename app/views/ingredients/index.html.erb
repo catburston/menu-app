@@ -1,39 +1,41 @@
 <!-- index.html.erb -->
+<!-- heading -->
+<div class="row">
+  <div class="large-12 columns">
+    <h2>My ingredients</h2>
+  </div>
+  <div class="large-12 columns">
+    <small>Sort by: <%= link_to 'Shop Section', ingredients_path(:sort_params => 'shop_section') %></small>
+  </div>
+</div>
 
-<h1>All ingredients</h1>
-<p>Sort: <%= link_to 'Shop Section', ingredients_path(:sort_params => 'shop_section') %></p>
+<!-- content -->
+<div class="row">
+  <div class="large-12 columns content-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Ingredient</th>
+          <th>Shop Section</th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Ingredient</th>
-      <th>Shop Section</th>
-      <th>Manage</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @ingredients.each do |ingredient| %>
-      <tr>
-        <td>
-          <p>
-            <%= link_to ingredient.name, ingredient_path(ingredient) %>
-          </p>
-        </td>
-        <td>
-          <p>
-            <%= ingredient.shop_section %>
-          </p>
-        </td>
-        <td>
-          <p>
-          <ul class="button-group round">
-            <li><%= link_to 'Edit', edit_menu_path(ingredient), class: "button" %></li>
-            <li><%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
-          </ul>
-          </p>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @ingredients.each do |ingredient| %>
+          <tr>
+            <td>
+              <h4><%= link_to ingredient.name, ingredient_path(ingredient) %></h4>
+              <ul class="button-group round">
+                <li><%= link_to 'Edit', edit_menu_path(ingredient), class: "button" %></li>
+                <li><%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
+              </ul>
+            </td>
+            <td>
+              <h5><%= ingredient.shop_section %></h5>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

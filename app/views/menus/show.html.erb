@@ -1,5 +1,6 @@
 <!-- show.html.erb -->
 
+<!-- errors -->
 <% if @menu.errors.any? %>
   <div data-alert class="alert-box" id="notice">
     <%= notice %>
@@ -7,39 +8,54 @@
   </div>
 <% end %>
 
-  <h2>Menu: <%= @menu.name %></h2>
-  <h3>Recipes</h3>
-  <ul>
-    <% @menu.recipes.each do |r| %>
-      <li>
-        <%= link_to r.name, recipe_path(r) %>
-      </li>
-    <% end %>
-  </ul>
-  <ul class="button-group round">
-    <li><%= link_to 'Edit', edit_recipe_path(@menu), class: "button" %></li>
-    <li><%= link_to 'Delete', @menu, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
-  </ul>
-<h2>All Ingredients for this Menu</h2>
+<!-- heading -->
+<div class="row">
+  <div class="large-12 columns">
+    <h2><%= @menu.name %></h2>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Quantity</th>
-    <th>Ingredient</th>
-    <th>Grocery</th>
-  </tr>
-  <% @ingredient_list.each do |k, v| %>
-  <% i = Ingredient.find_by name: k %>
-    <tr>
-      <td>
-        <%= v %>
-      </td>
-      <td>
-        <%= k %>
-      </td>
-      <td>
-        <%= i.shop_section %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<!-- content -->
+<div class="row">
+  <!-- left column -->
+  <div class="large-4 columns">
+    <h3>Recipes</h3>
+      <ul>
+        <% @menu.recipes.each do |r| %>
+          <li>
+            <%= link_to r.name, recipe_path(r) %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="button-group round">
+        <li><%= link_to 'Edit', edit_recipe_path(@menu), class: "button" %></li>
+        <li><%= link_to 'Delete', @menu, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
+      </ul>
+  </div>
+  <!-- right content -->
+  <div class="large-8 columns">
+    <h3>Menu ingredients</h3>
+
+    <table>
+      <tr>
+        <th>Quantity</th>
+        <th>Ingredient</th>
+        <th>Grocery</th>
+      </tr>
+      <% @ingredient_list.each do |k, v| %>
+      <% i = Ingredient.find_by name: k %>
+        <tr>
+          <td>
+            <%= v %>
+          </td>
+          <td>
+            <%= k %>
+          </td>
+          <td>
+            <%= i.shop_section %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

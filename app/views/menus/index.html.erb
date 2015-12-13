@@ -1,35 +1,27 @@
 <!-- index.html.erb -->
+<!-- heading -->
+<div class="row">
+  <div class="large-12 columns">
+    <h2>My menus</h2>
+  </div>
+</div>
 
-<h1>All menus</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Menu</th>
-      <th>Recipes</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @menus.each do |menu| %>
-      <tr>
-        <td>
-            <h3><%= link_to menu.name, menu %></h3>
-          <ul class="button-group round">
-            <li><%= link_to 'Edit', edit_menu_path(menu), class: "button" %></li>
-            <li><%= link_to 'Delete', menu, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></li>
-          </ul>
-        </td>
-        <td>
-          <ul>
-            <% menu.recipes.each do |r| %>
-              <li>
-                <%= link_to r.name, recipe_path(r) %>
-              </li>
-            <% end %>
-          </ul>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!-- content -->
+<div class="row">
+  <% @menus.each do |menu| %>
+    <div class="large-3 columns">
+      <ul class="pricing-table">
+        <li class="title"><%= menu.name %></li>
+        <li class="description">
+          <%= menu.created_at.strftime("%B %d, %Y") %>
+        </li>
+        <% menu.recipes.each do |r| %>
+          <li class="bullet-item">
+            <%= link_to r.name, recipe_path(r) %>
+          </li>
+        <% end %>
+        <li class="cta-button"><%= link_to 'Open', menu, class: "button" %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>
