@@ -1,32 +1,37 @@
 <!-- _form.html.erb -->
-
-<%= simple_form_for(@menu) do |f| %>
-  <% if @menu.errors.any? %>
-    <div data-alert class="alert-box" id="error_explanation">
-      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
-
-      <ul>
-      <% @menu.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<!-- form content -->
+<div class="row">
+  <div class="large-12 columns">
+    <%= simple_form_for(@menu) do |f| %>
+      <!-- errors -->
+      <% if @menu.errors.any? %>
+        <div data-alert class="alert-box" id="error_explanation">
+          <h4><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h4>
+          <ul>
+          <% @menu.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+          <a href="#" class="close">&times;</a>
+        </div>
       <% end %>
-      </ul>
-      <a href="#" class="close">&times;</a>
-    </div>
-  <% end %>
 
-  <div class="field row">
-    <%= f.label :name %><br>
-    <% if @menu.new_record? %>
-      <%= f.text_field :name, :value => "Menu for #{@date}" %>
-    <% else %>
-      <%= f.text_field :name %>
+      <div class="field row">
+        <h4>Menu name</h4>
+        <% if @menu.new_record? %>
+          <%= f.text_field :name, :value => "Menu for #{@date}" %>
+        <% else %>
+          <%= f.text_field :name %>
+        <% end %>
+      </div>
+      <hr>
+      <div class="field row">
+        <h4>Menu recipes</h4>
+        <%= f.collection_check_boxes(:recipe_ids, @recipes, :id, :name, :collection_wrapper_tag => :ul, :collection_wrapper_class => "small-block-grid-2 medium-block-grid-3 large-block-grid-4", :item_wrapper_tag => "li", :item_wrapper_class => "checkbox_container") %>
+      </div>
+      <div class="actions row">
+        <%= f.submit "Save", class: "button" %>
+      </div>
     <% end %>
   </div>
-  <div class="field row">
-
-    <%= f.collection_check_boxes(:recipe_ids, @recipes, :id, :name, :collection_wrapper_tag => :ul, :collection_wrapper_class => "small-block-grid-2 medium-block-grid-3 large-block-grid-4", :item_wrapper_tag => "li", :item_wrapper_class => "checkbox_container") %>
-  </div>
-  <div class="actions row">
-    <%= f.submit "Save", class: "button" %>
-  </div>
-<% end %>
+</div>

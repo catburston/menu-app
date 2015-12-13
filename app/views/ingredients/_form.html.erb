@@ -1,28 +1,32 @@
 <!-- _form.html.erb -->
 
-<%= form_for(@ingredient) do |f| %>
-  <% if @ingredient.errors.any? %>
-    <div data-alert class="alert-box" id="error_explanation">
-      <h2><%= pluralize(@ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
-
-      <ul>
-      <% @ingredient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<!-- form content -->
+<div class="row">
+  <div class="large-12 columns">
+    <%= form_for(@ingredient) do |f| %>
+      <% if @ingredient.errors.any? %>
+        <div data-alert class="alert-box" id="error_explanation">
+          <h4><%= pluralize(@ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h4>
+          <ul>
+          <% @ingredient.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+          <a href="#" class="close">&times;</a>
+        </div>
       <% end %>
-      </ul>
-      <a href="#" class="close">&times;</a>
-    </div>
-  <% end %>
 
-  <div class="field row">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+      <div class="field row">
+        <h4>Ingredient name</h4>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field row">
+        <h4>Store section</h4>
+        <%= select(:ingredient, :shop_section, ['baking', 'bread, pasta and pastry', 'condiments', 'dairy', 'frozen', 'fruit and veg', 'market', 'nuts', 'snacks', 'spices', 'tinned goods']) %>
+      </div>
+      <div class="actions row">
+        <%= f.submit "Save", class: "button" %>
+      </div>
+    <% end %>
   </div>
-  <div class="field row">
-    <%= f.label :shop_section %><br>
-    <%= select(:ingredient, :shop_section, ['baking', 'bread, pasta and pastry', 'condiments', 'dairy', 'frozen', 'fruit and veg', 'market', 'nuts', 'snacks', 'spices', 'tinned goods']) %>
-  </div>
-  <div class="actions row">
-    <%= f.submit "Save", class: "button" %>
-  </div>
-<% end %>
+</div>
