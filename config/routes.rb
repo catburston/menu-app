@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   resources :shopping_lists
 
-  get 'welcome/index'
-  root 'welcome#index'
+  # get 'welcome/index'
+  # root 'welcome#index'
+  root 'menus#index'
 
   resources :menus
 
