@@ -1,2 +1,2 @@
-== README
+== README doc
 This application is created to help with menu and shopping list management.
